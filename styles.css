@@ -204,10 +204,12 @@ h3 {
 
 .details__inline-subtext {
   display: inline-block;
+  min-width: 2.4em;
   color: var(--muted);
   font-size: 0.8rem;
   font-weight: 400;
   line-height: 1;
+  text-align: center;
   vertical-align: 0.12em;
 }
 
