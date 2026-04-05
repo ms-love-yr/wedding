@@ -142,6 +142,9 @@ h3 {
 .hero__lead {
   max-width: 33rem;
   margin-top: 14px;
+  font-family: "Noto Sans KR", sans-serif;
+  word-break: keep-all;
+  overflow-wrap: normal;
 }
 
 .hero__photo {
