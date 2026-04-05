@@ -6,6 +6,7 @@
   let galleryViewerImage = null;
   let galleryViewerCounter = null;
   let galleryViewerBackdrop = null;
+  let copyToast = null;
   let activeGalleryIndex = 0;
   let touchStartX = 0;
   let touchStartY = 0;
@@ -43,28 +44,62 @@
     return prompts[index % prompts.length] + " " + fileName + "의 기억을 남깁니다.";
   }
 
+  function showCopyToast(message, isError) {
+    if (!copyToast) {
+      copyToast = document.createElement("div");
+      copyToast.className = "copy-toast";
+      document.body.appendChild(copyToast);
+    }
+
+    copyToast.textContent = message;
+    copyToast.classList.toggle("is-error", Boolean(isError));
+    copyToast.classList.add("is-visible");
+
+    window.clearTimeout(showCopyToast.timeoutId);
+    showCopyToast.timeoutId = window.setTimeout(function () {
+      copyToast.classList.remove("is-visible");
+    }, 1400);
+  }
+
+  function getAccountOwnerName(element) {
+    const row = element.closest(".account-row");
+    if (!row) {
+      return "";
+    }
+    const name = row.querySelector("span");
+    return name ? name.textContent.trim() : "";
+  }
+
+  async function copyText(text, ownerName) {
+    if (!text) {
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(text);
+      showCopyToast((ownerName || "선택한") + " 님의 계좌가 복사되었습니다.");
+    } catch (error) {
+      showCopyToast("복사에 실패했습니다", true);
+    }
+  }
+
   function setupCopyButtons() {
-    const buttons = document.querySelectorAll(".copy-button");
-    buttons.forEach(function (button) {
-      button.addEventListener("click", async function () {
-        const text = button.dataset.copy || "";
-        if (!text) {
+    const rows = document.querySelectorAll(".account-row");
+    rows.forEach(function (row) {
+      row.addEventListener("click", function () {
+        const target = row.querySelector("[data-copy]");
+        if (!target) {
           return;
         }
+        copyText(target.dataset.copy || "", getAccountOwnerName(row));
+      });
+    });
 
-        try {
-          await navigator.clipboard.writeText(text);
-          const originalText = button.textContent;
-          button.textContent = "복사됨";
-          window.setTimeout(function () {
-            button.textContent = originalText;
-          }, 1400);
-        } catch (error) {
-          button.textContent = "복사 실패";
-          window.setTimeout(function () {
-            button.textContent = "복사하기";
-          }, 1400);
-        }
+    const buttons = document.querySelectorAll(".copy-button");
+    buttons.forEach(function (button) {
+      button.addEventListener("click", function (event) {
+        event.stopPropagation();
+        copyText(button.dataset.copy || "", getAccountOwnerName(button));
       });
     });
   }

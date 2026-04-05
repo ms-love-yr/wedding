@@ -317,6 +317,7 @@ h3 {
   align-items: start;
   padding: 14px 0;
   border-bottom: 1px solid rgba(25, 21, 18, 0.06);
+  cursor: pointer;
 }
 
 .account-row span {
@@ -327,6 +328,11 @@ h3 {
 .account-row strong {
   grid-column: 1;
   grid-row: 2;
+}
+
+.account-copy-target {
+  width: fit-content;
+  cursor: pointer;
 }
 
 .copy-button {
@@ -343,6 +349,39 @@ h3 {
   font-weight: 500;
   letter-spacing: -0.01em;
   cursor: pointer;
+}
+
+.copy-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  z-index: 60;
+  width: max-content;
+  max-width: min(calc(100vw - 32px), 420px);
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(25, 21, 18, 0.82);
+  color: #fff;
+  font-size: 0.9rem;
+  line-height: 1;
+  text-align: center;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  transform: translate(-50%, 12px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms ease;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.copy-toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.copy-toast.is-error {
+  background: rgba(110, 38, 44, 0.88);
 }
 
 .story-hero {
