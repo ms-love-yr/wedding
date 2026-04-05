@@ -26,7 +26,7 @@ def build_items(folder: str) -> list[dict[str, str]]:
 def main() -> None:
     payload = {
         "gallery": build_items("images/gallery"),
-        "past": build_items("images/past"),
+        "past": build_items("images/history"),
     }
     script = "window.SITE_DATA = " + json.dumps(payload, ensure_ascii=False, indent=2) + ";\n"
     OUTPUT.write_text(script, encoding="utf-8")

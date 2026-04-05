@@ -31,11 +31,11 @@ window.SITE_DATA = {
   ],
   "past": [
     {
-      "src": "images/past/동굴.jpeg",
+      "src": "images/history/동굴.jpeg",
       "title": "동굴"
     },
     {
-      "src": "images/past/벚꽃.jpeg",
+      "src": "images/history/벚꽃.jpeg",
       "title": "벚꽃"
     }
   ]
