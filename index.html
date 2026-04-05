@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="윤명석, 이유림의 결혼 소식을 전하는 모바일 청첩장">
+  <title>윤명석 이유림 결혼 알림장</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="home">
+  <div class="ambient ambient--one"></div>
+  <div class="ambient ambient--two"></div>
+
+  <div class="page-shell">
+    <header class="hero">
+      <p class="hero__kicker">결혼 소식</p>
+      <h1 class="hero__title">윤명석 ♥ 이유림</h1>
+      <p class="hero__date">2026년 9월 12일 토요일</p>
+      <p class="hero__lead">
+        저희 두 사람의 결혼 소식을
+        소중한 분들께 조용히 전합니다.
+        오래도록 기억하고 싶은 마음을 이 작은 페이지에 담았습니다.
+      </p>
+      <div class="hero__photo">
+        <img class="hero__image" src="main.png" alt="윤명석과 이유림의 메인 사진">
+      </div>
+    </header>
+
+    <main class="flow">
+      <section class="narrative">
+        <p class="section-label">전하는 말</p>
+        <div class="narrative__body">
+          <p>
+            함께한 시간 속에서 저희는 웃는 법과 기다리는 법,
+            그리고 한 사람의 곁을 오래 지킨다는 것이 얼마나 큰 위로가 되는지를 배웠습니다.
+          </p>
+          <p>
+            결혼식을 올리기보다,
+            인생의 방향을 함께 정한 이 순간의 소식을
+            저희를 아껴 주신 분들께 먼저 전하고 싶었습니다.
+            따뜻한 마음으로 바라봐 주신다면 그 마음을 오래 간직하겠습니다.
+          </p>
+        </div>
+      </section>
+
+      <section class="details">
+        <div class="details__line"></div>
+        <div class="details__grid">
+          <div class="details__item">
+            <strong>윤기도 · 안정선 <span class="details__inline-subtext">아들</span> 윤명석</strong>
+          </div>
+          <div class="details__item">
+            <strong>이영주 · 차옥자 <span class="details__inline-subtext">딸</span> 이유림</strong>
+          </div>
+          <div class="details__item details__item--date">
+            <strong>2026년 9월 12일</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="story-callout">
+        <div>
+          <p class="section-label">우리 이야기</p>
+          <h2>둘이 걸어온 시간이 궁금하다면</h2>
+          <p>
+            계절이 지나며 쌓인 장면들을 짧게 묶어 두었습니다.
+            사진과 함께 저희의 시간을 천천히 봐 주세요.
+          </p>
+        </div>
+        <a class="button" href="story.html">연애 이야기 보기</a>
+      </section>
+
+      <section class="gallery-section">
+        <div class="section-heading">
+          <p class="section-label">갤러리</p>
+          <h2>지금의 저희</h2>
+        </div>
+        <div id="gallery-grid" class="gallery-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="accounts">
+        <div class="section-heading">
+          <p class="section-label">계좌 안내</p>
+          <h2>마음 전하실 곳</h2>
+        </div>
+        <p class="accounts__lead">
+          마음을 전해 주실 분들을 위해 계좌번호를 남깁니다.
+        </p>
+        <div class="account-table">
+          <article class="account-group">
+            <h3>신랑측</h3>
+            <div class="account-row">
+              <span>윤명석</span>
+              <strong>은행명 000-0000-0000</strong>
+              <button
+                class="copy-button"
+                type="button"
+                data-copy="은행명 000-0000-0000"
+              >복사하기</button>
+            </div>
+            <div class="account-row">
+              <span>윤기도</span>
+              <strong>은행명 000-0000-0000</strong>
+              <button
+                class="copy-button"
+                type="button"
+                data-copy="은행명 000-0000-0000"
+              >복사하기</button>
+            </div>
+            <div class="account-row">
+              <span>안정선</span>
+              <strong>은행명 000-0000-0000</strong>
+              <button
+                class="copy-button"
+                type="button"
+                data-copy="은행명 000-0000-0000"
+              >복사하기</button>
+            </div>
+          </article>
+          <article class="account-group">
+            <h3>신부측</h3>
+            <div class="account-row">
+              <span>이유림</span>
+              <strong>은행명 000-0000-0000</strong>
+              <button
+                class="copy-button"
+                type="button"
+                data-copy="은행명 000-0000-0000"
+              >복사하기</button>
+            </div>
+            <div class="account-row">
+              <span>이영주</span>
+              <strong>은행명 000-0000-0000</strong>
+              <button
+                class="copy-button"
+                type="button"
+                data-copy="은행명 000-0000-0000"
+              >복사하기</button>
+            </div>
+            <div class="account-row">
+              <span>차옥자</span>
+              <strong>은행명 000-0000-0000</strong>
+              <button
+                class="copy-button"
+                type="button"
+                data-copy="은행명 000-0000-0000"
+              >복사하기</button>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="site-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

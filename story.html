@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="윤명석과 이유림의 연애 이야기">
+  <title>우리의 이야기</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="story">
+  <div class="ambient ambient--one"></div>
+  <div class="ambient ambient--two"></div>
+
+  <div class="page-shell page-shell--story">
+    <header class="story-hero">
+      <p class="hero__kicker">우리 이야기</p>
+      <h1 class="hero__title">함께한 시간들</h1>
+      <p class="hero__lead">
+        특별한 날보다 평범한 날들이 더 오래 남았습니다.
+        작은 계절들을 지나며 쌓인 저희의 시간을 이곳에 담았습니다.
+      </p>
+      <a class="button button--quiet" href="/">메인으로 돌아가기</a>
+    </header>
+
+    <main class="flow">
+      <section class="narrative narrative--story">
+        <p class="section-label">기억의 장면</p>
+        <div class="narrative__body">
+          <p>
+            같은 방향을 바라보게 된 이후로, 서로의 하루는 조금 더 단단해졌습니다.
+            이 페이지는 둘만의 거창한 연대기가 아니라,
+            문득 꺼내 보고 싶은 장면들을 모아 둔 기록에 가깝습니다.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <div id="story-grid" class="story-grid" aria-live="polite"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="site-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
