@@ -1,6 +1,7 @@
 (function () {
   const page = document.body.dataset.page;
   const data = window.SITE_DATA || { gallery: [], past: [] };
+  const params = new URLSearchParams(window.location.search);
   let galleryViewer = null;
   let galleryViewerImage = null;
   let galleryViewerCounter = null;
@@ -65,6 +66,45 @@
           }, 1400);
         }
       });
+    });
+  }
+
+  function setupConditionalSections() {
+    const hideAccounts = params.get("hideAccounts");
+    if (hideAccounts === "1" || hideAccounts === "true") {
+      const accountsSection = document.getElementById("accounts-section");
+      if (accountsSection) {
+        accountsSection.hidden = true;
+      }
+    }
+  }
+
+  function preserveQueryParamsOnInternalLinks() {
+    if (!window.location.search) {
+      return;
+    }
+
+    const links = document.querySelectorAll('a[href]');
+    links.forEach(function (link) {
+      const href = link.getAttribute("href");
+      if (!href || href.startsWith("#") || href.startsWith("http://") || href.startsWith("https://") || href.startsWith("mailto:") || href.startsWith("tel:")) {
+        return;
+      }
+
+      const url = new URL(href, window.location.href);
+      url.search = window.location.search;
+
+      if (href.startsWith("./")) {
+        link.setAttribute("href", "./" + url.search);
+        return;
+      }
+
+      if (!href.includes("/")) {
+        link.setAttribute("href", url.pathname.split("/").pop() + url.search);
+        return;
+      }
+
+      link.setAttribute("href", url.pathname + url.search);
     });
   }
 
@@ -320,4 +360,6 @@
   }
 
   setupCopyButtons();
+  setupConditionalSections();
+  preserveQueryParamsOnInternalLinks();
 })();
