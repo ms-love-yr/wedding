@@ -2,6 +2,8 @@
   const page = document.body.dataset.page;
   const data = window.SITE_DATA || { gallery: [], past: [] };
   const params = new URLSearchParams(window.location.search);
+  const bgmPlayer = document.getElementById("bgm-player");
+  const bgmToggle = document.getElementById("bgm-toggle");
   let galleryViewer = null;
   let galleryViewerImage = null;
   let galleryViewerCounter = null;
@@ -32,6 +34,77 @@
     empty.className = "empty-state";
     empty.textContent = message;
     return empty;
+  }
+
+  function setupBgmFallback() {
+    if (!bgmPlayer) {
+      return;
+    }
+
+    let retryCount = 0;
+    const maxRetries = 3;
+    let retryTimerId = null;
+
+    function showBgmToggle() {
+      if (bgmToggle) {
+        bgmToggle.hidden = false;
+      }
+    }
+
+    function hideBgmToggle() {
+      if (bgmToggle) {
+        bgmToggle.hidden = true;
+      }
+    }
+
+    function clearRetryTimer() {
+      if (retryTimerId) {
+        window.clearTimeout(retryTimerId);
+        retryTimerId = null;
+      }
+    }
+
+    function tryPlay() {
+      const playPromise = bgmPlayer.play();
+      if (!playPromise || typeof playPromise.then !== "function") {
+        hideBgmToggle();
+        return;
+      }
+
+      playPromise
+        .then(function () {
+          clearRetryTimer();
+          hideBgmToggle();
+        })
+        .catch(function () {
+          retryCount += 1;
+          if (retryCount >= maxRetries) {
+            showBgmToggle();
+            return;
+          }
+          clearRetryTimer();
+          retryTimerId = window.setTimeout(tryPlay, 700);
+        });
+    }
+
+    function resumeOnFirstInteraction() {
+      retryCount = 0;
+      tryPlay();
+      document.removeEventListener("pointerdown", resumeOnFirstInteraction);
+      document.removeEventListener("keydown", resumeOnFirstInteraction);
+    }
+
+    bgmPlayer.addEventListener("playing", hideBgmToggle);
+    bgmPlayer.addEventListener("canplay", tryPlay, { once: true });
+    document.addEventListener("pointerdown", resumeOnFirstInteraction, { once: true, passive: true });
+    document.addEventListener("keydown", resumeOnFirstInteraction, { once: true });
+
+    if (bgmToggle) {
+      bgmToggle.addEventListener("click", function () {
+        retryCount = 0;
+        tryPlay();
+      });
+    }
   }
 
   function buildStoryDescription(index, fileName) {
@@ -397,4 +470,5 @@
   setupCopyButtons();
   setupConditionalSections();
   preserveQueryParamsOnInternalLinks();
+  setupBgmFallback();
 })();
