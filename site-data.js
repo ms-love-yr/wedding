@@ -131,52 +131,52 @@ window.SITE_DATA = {
   ],
   "past": [
     {
-      "src": "images/history/봄01.jpeg",
-      "title": "봄01"
+      "src": "images/history/spring01.jpeg",
+      "title": "봄01"
     },
     {
-      "src": "images/history/봄02.jpeg",
-      "title": "봄02"
+      "src": "images/history/spring02.jpeg",
+      "title": "봄02"
     },
     {
-      "src": "images/history/봄03.jpeg",
-      "title": "봄03"
+      "src": "images/history/spring03.jpeg",
+      "title": "봄03"
     },
     {
-      "src": "images/history/여름01.jpeg",
-      "title": "여름01"
+      "src": "images/history/summer01.jpeg",
+      "title": "여름01"
     },
     {
-      "src": "images/history/여름02.jpeg",
-      "title": "여름02"
+      "src": "images/history/summer02.jpeg",
+      "title": "여름02"
     },
     {
-      "src": "images/history/여름03.jpeg",
-      "title": "여름03"
+      "src": "images/history/summer03.jpeg",
+      "title": "여름03"
     },
     {
-      "src": "images/history/가을01.jpeg",
-      "title": "가을01"
+      "src": "images/history/autumn01.jpeg",
+      "title": "가을01"
     },
     {
-      "src": "images/history/가을02.jpeg",
-      "title": "가을02"
+      "src": "images/history/autumn02.jpeg",
+      "title": "가을02"
     },
     {
-      "src": "images/history/가을03.jpeg",
-      "title": "가을03"
+      "src": "images/history/autumn03.jpeg",
+      "title": "가을03"
     },
     {
-      "src": "images/history/겨울01.jpeg",
-      "title": "겨울01"
+      "src": "images/history/winter01.jpeg",
+      "title": "겨울01"
     },
     {
-      "src": "images/history/겨울02.jpeg",
-      "title": "겨울02"
+      "src": "images/history/winter02.jpeg",
+      "title": "겨울02"
     },
     {
-      "src": "images/history/겨울03.jpeg",
-      "title": "겨울03"
+      "src": "images/history/winter03.jpeg",
+      "title": "겨울03"
     }
   ]
 };
