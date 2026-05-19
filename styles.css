@@ -275,6 +275,10 @@ h3 {
   border: 1px solid rgba(25, 21, 18, 0.14);
 }
 
+.story-hero .button--quiet {
+  margin-top: 10px;
+}
+
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -424,6 +428,10 @@ h3 {
 
 .story-hero {
   padding-top: 1.2rem;
+}
+
+.story-hero .hero__lead {
+  white-space: pre-line;
 }
 
 .story-grid {
