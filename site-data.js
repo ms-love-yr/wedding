@@ -1,142 +1,182 @@
 window.SITE_DATA = {
   "gallery": [
     {
-      "src": "images/gallery/01.jpg",
-      "title": "01"
+      "src": "images/gallery/001.jpeg",
+      "title": "001"
     },
     {
-      "src": "images/gallery/02.jpg",
-      "title": "02"
+      "src": "images/gallery/002.jpeg",
+      "title": "002"
     },
     {
-      "src": "images/gallery/03.jpeg",
-      "title": "03"
+      "src": "images/gallery/003.jpeg",
+      "title": "003"
     },
     {
-      "src": "images/gallery/04.jpeg",
-      "title": "04"
+      "src": "images/gallery/004.jpg",
+      "title": "004"
     },
     {
-      "src": "images/gallery/05.jpeg",
-      "title": "05"
+      "src": "images/gallery/005.jpeg",
+      "title": "005"
     },
     {
-      "src": "images/gallery/06.jpeg",
-      "title": "06"
+      "src": "images/gallery/006.jpeg",
+      "title": "006"
     },
     {
-      "src": "images/gallery/07.jpeg",
-      "title": "07"
+      "src": "images/gallery/007.jpeg",
+      "title": "007"
     },
     {
-      "src": "images/gallery/08.jpeg",
-      "title": "08"
+      "src": "images/gallery/008.jpeg",
+      "title": "008"
     },
     {
-      "src": "images/gallery/09.jpeg",
-      "title": "09"
+      "src": "images/gallery/009.jpeg",
+      "title": "009"
     },
     {
-      "src": "images/gallery/10.jpeg",
-      "title": "10"
+      "src": "images/gallery/010.jpeg",
+      "title": "010"
     },
     {
-      "src": "images/gallery/11.jpeg",
-      "title": "11"
+      "src": "images/gallery/011.jpg",
+      "title": "011"
     },
     {
-      "src": "images/gallery/12.jpeg",
-      "title": "12"
+      "src": "images/gallery/012.jpeg",
+      "title": "012"
     },
     {
-      "src": "images/gallery/13.jpeg",
-      "title": "13"
+      "src": "images/gallery/013.jpeg",
+      "title": "013"
     },
     {
-      "src": "images/gallery/14.jpeg",
-      "title": "14"
+      "src": "images/gallery/014.jpeg",
+      "title": "014"
     },
     {
-      "src": "images/gallery/15.jpeg",
-      "title": "15"
+      "src": "images/gallery/015.jpeg",
+      "title": "015"
     },
     {
-      "src": "images/gallery/16.jpeg",
-      "title": "16"
+      "src": "images/gallery/016.jpeg",
+      "title": "016"
     },
     {
-      "src": "images/gallery/17.jpeg",
-      "title": "17"
+      "src": "images/gallery/017.jpeg",
+      "title": "017"
     },
     {
-      "src": "images/gallery/18.jpeg",
-      "title": "18"
+      "src": "images/gallery/018.jpeg",
+      "title": "018"
     },
     {
-      "src": "images/gallery/19.jpeg",
-      "title": "19"
+      "src": "images/gallery/019.jpeg",
+      "title": "019"
     },
     {
-      "src": "images/gallery/20.jpeg",
-      "title": "20"
+      "src": "images/gallery/020.jpeg",
+      "title": "020"
     },
     {
-      "src": "images/gallery/21.jpeg",
-      "title": "21"
+      "src": "images/gallery/021.jpeg",
+      "title": "021"
     },
     {
-      "src": "images/gallery/22.jpeg",
-      "title": "22"
+      "src": "images/gallery/022.jpeg",
+      "title": "022"
     },
     {
-      "src": "images/gallery/23.jpeg",
-      "title": "23"
+      "src": "images/gallery/023.jpeg",
+      "title": "023"
     },
     {
-      "src": "images/gallery/24.jpeg",
-      "title": "24"
+      "src": "images/gallery/024.jpeg",
+      "title": "024"
     },
     {
-      "src": "images/gallery/25.jpeg",
-      "title": "25"
+      "src": "images/gallery/025.jpeg",
+      "title": "025"
     },
     {
-      "src": "images/gallery/26.jpeg",
-      "title": "26"
+      "src": "images/gallery/026.jpeg",
+      "title": "026"
     },
     {
-      "src": "images/gallery/27.jpeg",
-      "title": "27"
+      "src": "images/gallery/027.jpeg",
+      "title": "027"
     },
     {
-      "src": "images/gallery/28.jpeg",
-      "title": "28"
+      "src": "images/gallery/028.jpeg",
+      "title": "028"
     },
     {
-      "src": "images/gallery/29.jpeg",
-      "title": "29"
+      "src": "images/gallery/029.jpeg",
+      "title": "029"
     },
     {
-      "src": "images/gallery/30.jpeg",
-      "title": "30"
+      "src": "images/gallery/030.jpeg",
+      "title": "030"
     },
     {
-      "src": "images/gallery/31.jpeg",
-      "title": "31"
+      "src": "images/gallery/031.jpeg",
+      "title": "031"
     },
     {
-      "src": "images/gallery/32.jpeg",
-      "title": "32"
+      "src": "images/gallery/032.jpeg",
+      "title": "032"
     }
   ],
   "past": [
     {
-      "src": "images/history/동굴.jpeg",
-      "title": "동굴"
+      "src": "images/history/봄01.jpeg",
+      "title": "봄01"
     },
     {
-      "src": "images/history/벚꽃.jpeg",
-      "title": "벚꽃"
+      "src": "images/history/봄02.jpeg",
+      "title": "봄02"
+    },
+    {
+      "src": "images/history/봄03.jpeg",
+      "title": "봄03"
+    },
+    {
+      "src": "images/history/여름01.jpeg",
+      "title": "여름01"
+    },
+    {
+      "src": "images/history/여름02.jpeg",
+      "title": "여름02"
+    },
+    {
+      "src": "images/history/여름03.jpeg",
+      "title": "여름03"
+    },
+    {
+      "src": "images/history/가을01.jpeg",
+      "title": "가을01"
+    },
+    {
+      "src": "images/history/가을02.jpeg",
+      "title": "가을02"
+    },
+    {
+      "src": "images/history/가을03.jpeg",
+      "title": "가을03"
+    },
+    {
+      "src": "images/history/겨울01.jpeg",
+      "title": "겨울01"
+    },
+    {
+      "src": "images/history/겨울02.jpeg",
+      "title": "겨울02"
+    },
+    {
+      "src": "images/history/겨울03.jpeg",
+      "title": "겨울03"
     }
   ]
 };

@@ -4,6 +4,7 @@
   const params = new URLSearchParams(window.location.search);
   const bgmPlayer = document.getElementById("bgm-player");
   const bgmToggle = document.getElementById("bgm-toggle");
+  const galleryToggle = document.getElementById("gallery-toggle");
   let galleryViewer = null;
   let galleryViewerImage = null;
   let galleryViewerCounter = null;
@@ -108,6 +109,18 @@
   }
 
   function buildStoryDescription(index, fileName) {
+    const normalizedName = fileName.normalize("NFC");
+    const seasonCopy = {
+      "봄": "새싹이 돋아나듯 저희의 시간도 천천히 자라났고, 봄빛 가득한 풍경 속에서 서로를 향한 마음도 조금씩 선명해졌습니다.",
+      "여름": "뜨거운 계절 한가운데에서도 저희는 가장 편안한 표정으로, 함께 있는 순간의 즐거움을 천천히 쌓아 갔습니다.",
+      "가을": "조금씩 짙어지는 풍경 속을 나란히 걸으며, 함께하는 일상이 얼마나 다정한 일인지 자연스럽게 배워 갔습니다.",
+      "겨울": "차가운 바람이 불던 날에도 서로의 온기 덕분에, 저희는 늘 따뜻한 마음으로 같은 계절을 지나고 있었습니다."
+    };
+
+    if (seasonCopy[normalizedName]) {
+      return seasonCopy[normalizedName];
+    }
+
     const prompts = [
       "함께 웃었던 하루를 조용히 꺼내 보았습니다.",
       "익숙한 계절 속에서 더 가까워진 순간입니다.",
@@ -115,6 +128,73 @@
       "서로의 일상에 스며든 시간들을 담았습니다."
     ];
     return prompts[index % prompts.length] + " " + fileName + "의 기억을 남깁니다.";
+  }
+
+  function groupStoryItems(items) {
+    const groups = [];
+    items.forEach(function (item) {
+      const groupTitle = item.title.replace(/\d+$/, "").trim() || item.title;
+      const lastGroup = groups[groups.length - 1];
+
+      if (lastGroup && lastGroup.title === groupTitle) {
+        lastGroup.images.push(item);
+        return;
+      }
+
+      groups.push({
+        title: groupTitle,
+        images: [item]
+      });
+    });
+    return groups;
+  }
+
+  function createStoryCarousel(items, title) {
+    const media = document.createElement("div");
+    media.className = "story-card__media";
+
+    const slides = [];
+    items.forEach(function (item, index) {
+      const image = document.createElement("img");
+      image.src = item.src;
+      image.alt = title + " 사진 " + (index + 1);
+      image.loading = index === 0 ? "eager" : "lazy";
+      image.className = "story-card__image";
+      if (index === 0) {
+        image.classList.add("is-active");
+      }
+      slides.push(image);
+      media.appendChild(image);
+    });
+
+    if (items.length > 1) {
+      const dots = document.createElement("div");
+      dots.className = "story-card__dots";
+      const dotElements = [];
+
+      items.forEach(function (_, index) {
+        const dot = document.createElement("span");
+        dot.className = "story-card__dot";
+        if (index === 0) {
+          dot.classList.add("is-active");
+        }
+        dotElements.push(dot);
+        dots.appendChild(dot);
+      });
+
+      media.appendChild(dots);
+
+      let activeIndex = 0;
+      window.setInterval(function () {
+        slides[activeIndex].classList.remove("is-active");
+        dotElements[activeIndex].classList.remove("is-active");
+        activeIndex = (activeIndex + 1) % slides.length;
+        slides[activeIndex].classList.add("is-active");
+        dotElements[activeIndex].classList.add("is-active");
+      }, 2800);
+    }
+
+    return media;
   }
 
   function showCopyToast(message, isError) {
@@ -213,6 +293,29 @@
       }
 
       link.setAttribute("href", url.pathname + url.search);
+    });
+  }
+
+  function setupGalleryToggle(itemCount) {
+    const gallery = document.getElementById("gallery-grid");
+    if (!gallery || !galleryToggle) {
+      return;
+    }
+
+    const collapsedLimit = window.matchMedia("(min-width: 720px)").matches ? 6 : 4;
+    if (itemCount <= collapsedLimit) {
+      gallery.classList.remove("gallery-grid--collapsed");
+      galleryToggle.hidden = true;
+      return;
+    }
+
+    gallery.classList.add("gallery-grid--collapsed");
+    galleryToggle.hidden = false;
+    galleryToggle.textContent = "더보기";
+
+    galleryToggle.addEventListener("click", function () {
+      const isCollapsed = gallery.classList.toggle("gallery-grid--collapsed");
+      galleryToggle.textContent = isCollapsed ? "더보기" : "접기";
     });
   }
 
@@ -428,6 +531,7 @@
       });
       gallery.appendChild(card);
     });
+    setupGalleryToggle(data.gallery.length);
   }
 
   if (page === "story") {
@@ -436,32 +540,22 @@
       storyGrid.appendChild(createEmptyMessage("연애 이야기 사진이 아직 준비되지 않았습니다."));
       return;
     }
-    data.past.forEach(function (item, index) {
+    groupStoryItems(data.past).forEach(function (group, index) {
       const article = document.createElement("article");
       article.className = "story-card";
-
-      const image = document.createElement("img");
-      image.src = item.src;
-      image.alt = item.title;
-      image.loading = "lazy";
 
       const body = document.createElement("div");
       body.className = "story-card__body";
 
-      const tag = document.createElement("span");
-      tag.className = "story-card__tag";
-      tag.textContent = "기록 " + String(index + 1).padStart(2, "0");
-
       const title = document.createElement("h2");
-      title.textContent = item.title;
+      title.textContent = group.title;
 
       const text = document.createElement("p");
-      text.textContent = buildStoryDescription(index, item.title);
+      text.textContent = buildStoryDescription(index, group.title);
 
-      body.appendChild(tag);
       body.appendChild(title);
       body.appendChild(text);
-      article.appendChild(image);
+      article.appendChild(createStoryCarousel(group.images, group.title));
       article.appendChild(body);
       storyGrid.appendChild(article);
     });

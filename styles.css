@@ -282,6 +282,10 @@ h3 {
   margin-top: 22px;
 }
 
+.gallery-grid--collapsed .gallery-item:nth-child(n + 5) {
+  display: none;
+}
+
 .gallery-item {
   appearance: none;
   padding: 0;
@@ -302,8 +306,24 @@ h3 {
 }
 
 .gallery-item:hover img,
-.story-card:hover img {
+.story-card:hover .story-card__image.is-active {
   transform: scale(1.03);
+}
+
+.gallery-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  margin: 22px auto 0;
+  padding: 0 18px;
+  border: 1px solid rgba(25, 21, 18, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.92rem;
+  cursor: pointer;
 }
 
 .accounts__lead {
@@ -416,13 +436,50 @@ h3 {
   gap: 18px;
 }
 
-.story-card img {
+.story-card__media {
+  position: relative;
   width: 100%;
   aspect-ratio: 4 / 5;
-  object-fit: cover;
+  overflow: hidden;
   border-radius: 24px;
   box-shadow: var(--shadow);
-  transition: transform 300ms ease;
+}
+
+.story-card__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 700ms ease, transform 700ms ease;
+}
+
+.story-card__image.is-active {
+  opacity: 1;
+}
+
+.story-card__dots {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  z-index: 1;
+  display: inline-flex;
+  gap: 6px;
+  transform: translateX(-50%);
+}
+
+.story-card__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.38);
+  transition: transform 220ms ease, background 220ms ease;
+}
+
+.story-card__dot.is-active {
+  background: rgba(255, 255, 255, 0.88);
+  transform: scale(1.15);
 }
 
 .story-card__body {
@@ -575,6 +632,14 @@ h3 {
     gap: 14px;
   }
 
+  .gallery-grid--collapsed .gallery-item:nth-child(n + 5) {
+    display: block;
+  }
+
+  .gallery-grid--collapsed .gallery-item:nth-child(n + 7) {
+    display: none;
+  }
+
   .account-table {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 36px;
@@ -611,7 +676,7 @@ h3 {
     align-items: end;
   }
 
-  .story-card:nth-child(odd) img {
+  .story-card:nth-child(odd) .story-card__media {
     order: 2;
   }
 
